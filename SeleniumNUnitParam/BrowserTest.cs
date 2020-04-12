@@ -33,16 +33,17 @@ namespace SeleniumNUnitParam
 
         }
 
-        [Test]
+        [Test] 
         public void ExecuteAutomationTest()
         {
-            Driver.Navigate().GoToUrl("http://executeautomation.com/demosite/Login.html");
-            Driver.FindElement(By.Name("UserName")).SendKeys("admin");
-            Driver.FindElement(By.Name("Password")).SendKeys("admin");
-            Driver.FindElement(By.Name("Login")).Submit();
-            System.Threading.Thread.Sleep(2000);
-            Assert.That(Driver.PageSource.Contains("Selenium"), Is.EqualTo(true),
-                                            "The text selenium doest not exist");
+            Thread.Sleep(3000);
+
+            Driver.Navigate().GoToUrl("https://www.gograph.com");
+            Thread.Sleep(3000);
+            var url = this.Driver.Url;
+            var title = Driver.Title;
+            Assert.AreEqual("https://www.gograph.com/", url);
+            Assert.AreEqual("Great ClipArt, Illustrations, and Vectors at Low Prices - GoGraph", title, "Title doesnt match");
 
         }
 
